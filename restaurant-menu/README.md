@@ -116,9 +116,9 @@ A component is a special kind of directive that uses a simplified configuration 
 >- Have a well defined life cycle
 
 In order to carry out a component based architecture, the following conventions were followed: 
-	- Inputs to the components are defined only with one way binding i.e. '<'
-	- Properties passed in are never changed
-	Note: There are no outputs from my components but if there were, they would be implemented with a callback and the '&' binding convention
+>- Inputs to the components are defined only with one way binding i.e. '<'
+>- Properties passed in are never changed
+>Note: There are no outputs from my components but if there were, they would be implemented with a callback and the '&' binding convention
 	
 There are 3 components defined within the Restaurant Menu application:
 
