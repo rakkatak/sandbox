@@ -158,7 +158,7 @@ Similar to categories, a one way binding is defined for the input menu items usi
 ### loadingspinner.component.js
 Source: [loadingspinner.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/spinner/loadingspinner.component.js)
 
-The loadingSpinner component allows a spinner to be displayed when state changes are in progress. This component defines a controller SpinnerController. The SpinnerController initializes listeners, in its $onInit function, called on the initialization stage of the loadingSpinner component life cycle.  The following listeners are defined to listen for the following global scope events, which may occur when the restaurant menu application is changing states.
+The loadingSpinner component allows a spinner to be displayed when state changes are in progress. A showSpinner property on the component is used to control whether the spinner is visible within the spinner [template](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/spinner/templates/loadingspinner.template.html). This component defines a controller SpinnerController. The SpinnerController initializes listeners, in its $onInit function, called on the initialization stage of the loadingSpinner component life cycle.  The following listeners are defined to listen for the following global scope events, which may occur when the restaurant menu application is changing states.
 
 #### $stateChangeStart
 When a $stateChangeStart event is issued, the showSpinner property is set to true.   
