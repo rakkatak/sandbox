@@ -79,7 +79,7 @@ For the restaurant menu application, the ui-router routing implementation is use
 You can see in [routes.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/routes.js) that we define a controller for each of the *categories* and *items* states, as a part of the state definition.
 
 ### categories state
-The *categories* state has a CategoriesController defined on it. A *categories* value will be made available to the CategoriesController through injection due to the resolve object's definition. The resolve object *categories* property returns a promise, and the *categories* state will only be displayed if the promise is resolved.
+The *categories* state has a *CategoriesController* defined on it. A *categories* value will be made available to the *CategoriesController* through injection due to the resolve object's definition. The resolve object *categories* property returns a promise, and the *categories* state will only be displayed if the promise is resolved.
      
 		 .state('categories', {
 		   url: '/categories',
@@ -95,7 +95,7 @@ The *categories* state has a CategoriesController defined on it. A *categories* 
 		 })
 	 
 ### items state
-The *items* state has a ItemsController defined on it and is very similar to the *categories* state. An *items* value will be made available to the ItemsController through injection due to the resolve object's definition. The resolve object *items* property returns a promise, and the *items* state will only be displayed if the promise is resolved.
+The *items* state has a *ItemsController* defined on it and is very similar to the *categories* state. An *items* value will be made available to the *ItemsController* through injection due to the resolve object's definition. The resolve object *items* property returns a promise, and the *items* state will only be displayed if the promise is resolved.
       
 		 .state('items', {
 		   url: '/items/{short_name}/{category}',
