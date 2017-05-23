@@ -74,7 +74,7 @@ Minification would work in this case as it would not replace string values.
 
 ## Routing State with a Controller
 
-For the restaurant menu application e have used the ui-router routing implementation in order to navigate between states.
+For the restaurant menu application the ui-router routing implementation is used, in order to navigate between states.
 
 You can see in [routes.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/routes.js) that we define a controller for each the categories and items states, as a part of the state definition.
 
