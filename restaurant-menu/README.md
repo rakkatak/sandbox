@@ -117,7 +117,7 @@ In Angular 1.5, a component is a special kind of directive that uses a simplifie
 >- Components only control their own view and data, and never modify data or DOM outside of their own scope. 
 >- Components have a well-defined public API that determines how data inputs into the component and how data outputs from the component. 
 >- Components only use the isolate scope
->- Have a well defined life cycle
+>- Components have a well defined life cycle
 
 With the menu application, in order to carry out a component based architecture, the following conventions were followed: 
 >- Inputs to the components are defined only with one way binding i.e. '<'
