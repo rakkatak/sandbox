@@ -76,17 +76,17 @@ You can see in [routes.js](https://github.com/rakkatak/sandbox/blob/master/resta
 
 ### categories state
 The categories state has a CategoriesController defined on it. A 'categories' value will be made available to the CategoriesController through injection due to the resolve object's definition. The resolve object categories property returns a promise, and the categories state will only be displayed if the promise is resolved.
-      ...
+     ...
      .state('categories', {
        url: '/categories',
        templateUrl: 'src/menu/templates/main-categories.template.html',
        controller: 'CategoriesController as categoriesCtrl',
        resolve: {
-         categories: [ 'MenuDataService',
-                  function(MenuDataService) {
-                    return MenuDataService.getAllCategories();
-                  }
-                ]
+          categories: [ 'MenuDataService',
+             function(MenuDataService) {
+                 return MenuDataService.getAllCategories();
+             }
+          ]
        }
      })
 	 
