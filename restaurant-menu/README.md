@@ -76,7 +76,7 @@ Minification would work in this case as it would not replace string values.
 
 For the restaurant menu application, the ui-router routing implementation is used, in order to navigate between states.
 
-You can see in [routes.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/routes.js) that we define a controller for each the categories and items states, as a part of the state definition.
+You can see in [routes.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/routes.js) that we define a controller for each of the 'categories' and 'items' states, as a part of the state definition.
 
 ### categories state
 The categories state has a CategoriesController defined on it. A 'categories' value will be made available to the CategoriesController through injection due to the resolve object's definition. The resolve object categories property returns a promise, and the categories state will only be displayed if the promise is resolved.
