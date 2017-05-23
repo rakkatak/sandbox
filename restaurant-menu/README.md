@@ -69,13 +69,13 @@ Minification would work in this case as it would not replace string values.
 There are 2 components defined within the Restaurant Menu application:
 
 ### categories.component.js
-###[categories.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/menu/categories.component.js)
+Source: [categories.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/menu/categories.component.js)
 
 ### items.component.js
-###[items.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/menu/items.component.js)
+Source: [items.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/menu/items.component.js)
 
 ### loadingspinner.component.js
-###[loadingspinner.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/spinner/loadingspinner.component.js)
+Source: [loadingspinner.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/spinner/loadingspinner.component.js)
 
 ## Component Lifecycle
 
