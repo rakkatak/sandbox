@@ -110,10 +110,10 @@ The items state has a ItemsController defined on it and is very similar to the c
 
 A component is a special kind of directive that uses a simplified configuration that assumes some defaults. Component based architecture has the following principals:
 
-	- Components only control their own view and data, and never modify data or DOM outside of their own scope. 
-	- Components have well-defined public API that determines how data inputs into the component and data outputs from the component. 
-	- Components only use the isolate scope
-	- Have a well defined life cycle
+>- Components only control their own view and data, and never modify data or DOM outside of their own scope. 
+>- Components have well-defined public API that determines how data inputs into the component and data outputs from the component. 
+>- Components only use the isolate scope
+>- Have a well defined life cycle
 
 In order to carry out a component based architecture, the following conventions were followed: 
 	- Inputs to the components are defined only with one way binding i.e. '<'
