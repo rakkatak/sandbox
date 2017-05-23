@@ -123,13 +123,13 @@ Source: [loadingspinner.component.js](https://github.com/rakkatak/sandbox/blob/m
 
 The loadingSpinner component allows a spinner to be displayed with state changes are in progress. This component defines a controller SpinnerController. The SpinnerController initializes listeners, in its $onInit function, called on the initialization stage of the component life cycle.  There are listeners defined to listen for the following global scope events:
 
-####$stateChangeStart
+#### $stateChangeStart
 When a $stateChangeStart event is issued, the showSpinner property is set to true.   
 
-####$stateChangeSuccess
+#### $stateChangeSuccess
 When a $stateChangeSuccess event is issued, the showSpinner property is set to false.  
 
-####$stateChangeError
+#### $stateChangeError
 When a $stateChangeError event is issued, meaning an error in loading a state has occurred and will not be reached, so the showSpinner property is set to false.  
 
 The SpinnerController destroys each listener, in its $onDestroy function, called on the destroy stage of the component life cycle.
