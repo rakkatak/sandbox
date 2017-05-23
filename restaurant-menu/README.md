@@ -2,7 +2,7 @@
 
 by Anita Katakkar
 
-This is an application used to display 3 views: the landing page (home), the categories page and the menu items page. 
+This is an application used to display 3 states: home, categories and menu items. 
 
 The project required Angular 1.5 due some environment constraints. In order to come closer to the style of Angular 2, components were used. 
 
@@ -67,6 +67,44 @@ Below we attach an $inject property to the controller that is set to an array of
 	 
 ***Result:***
 Minification would work in this case as it would not replace string values. 
+
+## Routing State with a Controller
+
+We have used the ui-router routing implementation in order to navigate between states.
+
+You can see in [routes.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/routes.js) that we define a controller for each the categories and items states, as a part of the state definition.
+
+### categories state
+The categories state has a CategoriesController defined on it. A 'categories' value will be made available to the CategoriesController through injection due to the resolve object's definition. The resolve object categories property returns a promise, and the categories state will only be displayed if the promise is resolved.
+      ...
+     .state('categories', {
+       url: '/categories',
+       templateUrl: 'src/menu/templates/main-categories.template.html',
+       controller: 'CategoriesController as categoriesCtrl',
+       resolve: {
+         categories: [ 'MenuDataService',
+                  function(MenuDataService) {
+                    return MenuDataService.getAllCategories();
+                  }
+                ]
+       }
+     })
+	 
+### items state
+The items state has a ItemsController defined on it and is very similar to the categories state. An 'items' value will be made available to the ItemsController through injection due to the resolve object's definition. The resolve object items property returns a promise, and the items state will only be displayed if the promise is resolved.
+      ...
+     .state('items', {
+       url: '/items/{short_name}/{category}',
+       templateUrl: 'src/menu/templates/main-items.template.html',
+       controller: 'ItemsController as itemsCtrl',
+       resolve: {
+         items: [ '$stateParams', 'MenuDataService',
+                  function($stateParams, MenuDataService) {
+                    return MenuDataService.getItemsForCategory($stateParams.short_name);
+                  }
+                ]
+       }
+     });
 
 ## Angular Components
 
@@ -140,6 +178,4 @@ The SpinnerController destroys each listener, in its $onDestroy function, called
 	     });
 	 };
 
-
-## State Chanegs and Routing
 
