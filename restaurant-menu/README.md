@@ -11,6 +11,7 @@ In addition 'use strict' is used at the top of each file within the IIFE declara
 Example:
 
 This code:
+
     (function() {
       x=hello
     })();
@@ -19,9 +20,9 @@ Would result in:
 The assumption that x is on the global scope.
 
 This code:
+
     (function() {
       'use strict' 
-  
       x=hello
     })();
 
