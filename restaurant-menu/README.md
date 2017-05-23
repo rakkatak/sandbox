@@ -74,7 +74,7 @@ Minification would work in this case as it would not replace string values.
 
 ## Routing State with a Controller
 
-We have used the ui-router routing implementation in order to navigate between states.
+For the restaurant menu application e have used the ui-router routing implementation in order to navigate between states.
 
 You can see in [routes.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/routes.js) that we define a controller for each the categories and items states, as a part of the state definition.
 
@@ -119,7 +119,7 @@ In Angular 1.5, a component is a special kind of directive that uses a simplifie
 >- Components only use the isolate scope
 >- Components have a well defined life cycle
 
-With the menu application, in order to carry out a component based architecture, the following conventions were followed: 
+In order to carry out a component based architecture within the restaurant menu application, the following conventions were followed: 
 >- Inputs to the components are only defined with a one way binding i.e. '<'
 >- Properties passed in are never changed
 >
