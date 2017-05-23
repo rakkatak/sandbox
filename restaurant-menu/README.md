@@ -144,7 +144,7 @@ The component definition uses a 1 way binding for the input categories using the
 ### items.component.js
 Source: [items.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/menu/items.component.js)
 
-Similar to categories a one way binding is defined for the input menu items using the '<' binding convention: 
+Similar to categories, a one way binding is defined for the input menu items using the '<' binding convention: 
 
 	 angular.module('MenuApp')
 	 .component('items', {
@@ -169,7 +169,7 @@ When a $stateChangeSuccess event is issued, meaning the state has been successfu
 #### $stateChangeError
 When a $stateChangeError event is issued, meaning an error in loading a state has occurred and will not be reached, the showSpinner property is set to false.  
 
-The SpinnerController destroys each listener, in its $onDestroy function, called on the destroy stage of the loadingSpinner component life cycle.
+The SpinnerController destroys each listener, in its $onDestroy function, called on the destroy stage of the loadingSpinner component life cycle in order to free up memory.
 
 	 $ctrl.$onDestroy = function () {
 	     cancellers.forEach(function (item) {
