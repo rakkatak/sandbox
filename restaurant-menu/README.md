@@ -121,7 +121,7 @@ Demonstrates the use of one way binding on items.
 ### loadingspinner.component.js
 Source: [loadingspinner.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/spinner/loadingspinner.component.js)
 
-The loadingSpinner component allows a spinner to be displayed with state changes are in progress. This component defines a controller SpinnerController. The SpinnerController initializes listeners, in its $onInit function, called on the initialization stage of the component life cycle.  There are listeners defined to listen for the following global scope events:
+The loadingSpinner component allows a spinner to be displayed when state changes are in progress. This component defines a controller SpinnerController. The SpinnerController initializes listeners, in its $onInit function, called on the initialization stage of the loadingSpinner life cycle.  There are listeners defined to listen for the following global scope events:
 
 #### $stateChangeStart
 When a $stateChangeStart event is issued, the showSpinner property is set to true.   
@@ -130,9 +130,9 @@ When a $stateChangeStart event is issued, the showSpinner property is set to tru
 When a $stateChangeSuccess event is issued, the showSpinner property is set to false.  
 
 #### $stateChangeError
-When a $stateChangeError event is issued, meaning an error in loading a state has occurred and will not be reached, so the showSpinner property is set to false.  
+When a $stateChangeError event is issued, meaning an error in loading a state has occurred and will not be reached, the showSpinner property is set to false.  
 
-The SpinnerController destroys each listener, in its $onDestroy function, called on the destroy stage of the component life cycle.
+The SpinnerController destroys each listener, in its $onDestroy function, called on the destroy stage of the loadingSpinner life cycle.
 
 	 $ctrl.$onDestroy = function () {
 	     cancellers.forEach(function (item) {
