@@ -11,19 +11,19 @@ In addition 'use strict' is used at the top of each file within the IIFE declara
 Example:
 
 This code:
-(function() {
-  x=hello
-})();
+    (function() {
+      x=hello
+    })();
 
 Would result in:
 The assumption that x is on the global scope.
 
 This code:
-(function() {
-  'use strict' 
+    (function() {
+      'use strict' 
   
-  x=hello
-})();
+      x=hello
+    })();
 
 Would result in:
 The browser will complain that 'x is not defined' thus giving us the heads up that we forgot the var keyword. 
