@@ -120,7 +120,7 @@ In Angular 1.5, a component is a special kind of directive that uses a simplifie
 >- Components have a well defined life cycle
 
 With the menu application, in order to carry out a component based architecture, the following conventions were followed: 
->- Inputs to the components are defined only with a one way binding i.e. '<'
+>- Inputs to the components are only defined with a one way binding i.e. '<'
 >- Properties passed in are never changed
 >
 >Note: There are no outputs from my components but if there were, they would be implemented with a callback and the '&' binding convention
@@ -130,9 +130,7 @@ There are 3 components defined within the Restaurant Menu application:
 ### categories.component.js
 Source: [categories.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/menu/categories.component.js)
 
-***One way binding of categories***
-
-The component definition uses a 1 way binding for the input categories:
+The component definition uses a 1 way binding for the input categories using the '<' binding convention:
      	 
      angular.module('MenuApp')
      .component('categories', {
@@ -142,13 +140,11 @@ The component definition uses a 1 way binding for the input categories:
          }
      });
 	 
-***Summary:***
-Demonstrates the use of one way binding on categories. 
 
 ### items.component.js
 Source: [items.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/menu/items.component.js)
 
-Similar to categories a one way binding is defined for the input menu items. 
+Similar to categories a one way binding is defined for the input menu items using the '<' binding convention: 
 
 	 angular.module('MenuApp')
 	 .component('items', {
@@ -158,8 +154,6 @@ Similar to categories a one way binding is defined for the input menu items.
 		}
 	 });
 
-***Summary:***
-Demonstrates the use of one way binding on items. 
 
 ### loadingspinner.component.js
 Source: [loadingspinner.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/spinner/loadingspinner.component.js)
