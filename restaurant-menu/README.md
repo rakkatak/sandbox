@@ -2,6 +2,10 @@
 
 by Anita Katakkar
 
+This is an application used to display 3 views: the landing page (home), the categories page and the menu items page. 
+
+The project required Angular 1.5 due some environment constraints. In order to come closer to the style of Angular 2, components were used. 
+
 ## Use of IIFE blocks and 'use strict'
 
 You will see that in all of the JavaScript files an IIFE (Immediately Invoked Function Expression) is defined. This is a JavaScript function that runs as soon as it is defined. We use it to make sure that no local variables bleed into the global scope. 
@@ -66,16 +70,76 @@ Minification would work in this case as it would not replace string values.
 
 ## Angular Components
 
-There are 2 components defined within the Restaurant Menu application:
+A component is a special kind of directive that uses a simplified configuration that assumes some defaults. Component based architecture has the following principals:
+
+- Components only control their own view and data, and never modify data or DOM outside of their own scope. 
+- Components have well-defined public API that determines how data inputs into the component and data outputs from the component. 
+- Components only use the isolate scope
+- Have a well defined life cycle
+
+In order to carry out a component based architecture, the following conventions were followed: 
+	- Inputs to the components are defined only with one way binding i.e. '<'
+	- Properties passed in are never changed
+	Note: There are no outputs from my components but if there were, they would be implemented with a callback and the '&' binding convention
+	
+There are 3 components defined within the Restaurant Menu application:
 
 ### categories.component.js
 Source: [categories.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/menu/categories.component.js)
 
+***One way binding of categories***
+
+The component definition uses a 1 way binding for the input categories:
+     	 
+     angular.module('MenuApp')
+     .component('categories', {
+         templateUrl: 'src/menu/templates/categories.template.html',
+         bindings: {
+           categories: '<'
+         }
+     });
+	 
+***Summary:***
+Demonstrates the use of one way binding on categories. 
+
 ### items.component.js
 Source: [items.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/menu/items.component.js)
+
+Similar to categories a one way binding is defined for the input menu items. 
+
+	 angular.module('MenuApp')
+	 .component('items', {
+	    templateUrl: 'src/menu/templates/items.template.html',
+	    bindings: {
+		  items: '<'
+		}
+	 });
+
+***Summary:***
+Demonstrates the use of one way binding on items. 
 
 ### loadingspinner.component.js
 Source: [loadingspinner.component.js](https://github.com/rakkatak/sandbox/blob/master/restaurant-menu/src/spinner/loadingspinner.component.js)
 
-## Component Lifecycle
+The loadingSpinner component allows a spinner to be displayed with state changes are in progress. This component defines a controller SpinnerController. The SpinnerController initializes listeners, in its $onInit function, called on the initialization stage of the component life cycle.  There are listeners defined to listen for the following global scope events:
+
+####$stateChangeStart
+When a $stateChangeStart event is issued, the showSpinner property is set to true.   
+
+####$stateChangeSuccess
+When a $stateChangeSuccess event is issued, the showSpinner property is set to false.  
+
+####$stateChangeError
+When a $stateChangeError event is issued, meaning an error in loading a state has occurred and will not be reached, so the showSpinner property is set to false.  
+
+The SpinnerController destroys each listener, in its $onDestroy function, called on the destroy stage of the component life cycle.
+
+	 $ctrl.$onDestroy = function () {
+	     cancellers.forEach(function (item) {
+	         item();
+	     });
+	 };
+
+
+## State Chanegs and Routing
 
