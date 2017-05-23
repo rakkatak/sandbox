@@ -4,7 +4,7 @@ by Anita Katakkar
 
 This is an application used to display a restaurant menu. The user will initially be presented with a landing page. The user can then click on the 'View Menu' link to view the menu categories. When a category is clicked, all of the menu items that fall under that category will be displayed.
 
-The application was built using Angular and I was required to use Angular 1.5 due some environment constraints. In order to come closer to the style of Angular 2, components were used. 
+The application was built using Angular and I was required to use Angular 1.5 due to some environment constraints. In order to come closer to the style of Angular 2, components were used.  
 
 The angular implementation includes 3 states: home, categories and menu items. 
 
