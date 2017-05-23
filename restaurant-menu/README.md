@@ -112,7 +112,7 @@ The items state has a ItemsController defined on it and is very similar to the c
 
 ## Angular Components
 
-In Angular 1.5, a component is a special kind of directive that uses a simplified configuration that assumes some defaults. Component based architecture has the following principals:
+In Angular 1.5, a component is a special kind of directive that uses a simplified configuration. Component based architecture has the following principals:
 
 >- Components only control their own view and data, and never modify data or DOM outside of their own scope. 
 >- Components have well-defined public API that determines how data inputs into the component and data outputs from the component. 
