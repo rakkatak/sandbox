@@ -2,7 +2,7 @@
 
 by Anita Katakkar
 
-This is an application used to display a restaurant menu by first showing a landing page. The user can then click on the 'View Menu' link to view menu categories. When a category is clicked, all the menu items that fall under that category will be displayed.
+This is an application used to display a restaurant menu. The user will initially be presented with a landing page. The user can then click on the 'View Menu' link to view the menu categories. When a category is clicked, all of the menu items that fall under that category will be displayed.
 
 The application was built using Angular and I was required to use Angular 1.5 due some environment constraints. In order to come closer to the style of Angular 2, components were used. 
 
@@ -119,7 +119,7 @@ A component is a special kind of directive that uses a simplified configuration 
 >- Components only use the isolate scope
 >- Have a well defined life cycle
 
-In order to carry out a component based architecture, the following conventions were followed: 
+With the menu application, in order to carry out a component based architecture, the following conventions were followed: 
 >- Inputs to the components are defined only with one way binding i.e. '<'
 >- Properties passed in are never changed
 >
