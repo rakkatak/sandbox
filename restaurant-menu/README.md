@@ -120,7 +120,7 @@ In Angular 1.5, a component is a special kind of directive that uses a simplifie
 >- Components have a well defined life cycle
 
 With the menu application, in order to carry out a component based architecture, the following conventions were followed: 
->- Inputs to the components are defined only with one way binding i.e. '<'
+>- Inputs to the components are defined only with a one way binding i.e. '<'
 >- Properties passed in are never changed
 >
 >Note: There are no outputs from my components but if there were, they would be implemented with a callback and the '&' binding convention
