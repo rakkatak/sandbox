@@ -37,7 +37,32 @@ The browser will complain that 'x is not defined' thus giving us the heads up th
 
 ## Protection from Minification
 
+The following pattern is used to inject dependencies into modules in order to protect it from minification. Minification is the process of removing all unnecessary characters from source code, to reduce the source that the browser needs to download.
 
+### Example:
+
+***Not protected from minification ***
+     	 
+     angular.module('MyApp', )
+     .controller('MyController', MyController);
+	 
+	 function MyController($scope, $filter) {...}
+	 
+***Result:***
+Upon minification the variables $scope and $filter would be replaced with some other name. Angular would then complain that it could not find the dependencies to be injected. 
+
+***Protected from minification ***
+
+Below we attach an $inject property to the controller that is set to an array of strings. The strings are the names of the dependencies (services) to be injected. 
+     	 
+     angular.module('MyApp', )
+     .controller('MyController', MyController);
+	 
+	 MyController.$inject = ['$scope', '$filter'];
+	 function MyController($scope, $filter) {...}
+	 
+***Result:***
+Minification would work in this case as it would not replace string values. 
 
 ## Angular Components
 
