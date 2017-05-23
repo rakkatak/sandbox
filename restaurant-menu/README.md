@@ -37,7 +37,7 @@ The browser will complain that 'x is not defined' thus giving us the heads up th
 
 ## Protection from Minification
 
-All of the angular controllers and services within the JavaScript source files use a pattern that is used to inject dependencies into modules in order to protect it from minification. Minification is the process of removing all unnecessary characters from source code, to reduce the source that the browser needs to download.
+All of the angular controllers and services within the JavaScript source files use a pattern that is used to inject dependencies into modules in order to protect them from minification. Minification is the process of removing all unnecessary characters from source code, to reduce the source that the browser needs to download.
 
 ### Example:
 
@@ -53,7 +53,7 @@ Upon minification the variables $scope and $filter would be replaced with some o
 
 ***Protected from minification***
 
-Below we attach an $inject property to the controller that is set to an array of strings. The strings are the names of the dependencies (services) to be injected. 
+Below we attach an $inject property to the controller that is set to an array of strings. The strings are the names of the dependencies (services) to be injected. Angular would check to see if an $inject property had been defined on the controller and if so use it to determine the injected services.  
      	 
      angular.module('MyApp', )
      .controller('MyController', MyController);
@@ -65,6 +65,7 @@ Below we attach an $inject property to the controller that is set to an array of
 Minification would work in this case as it would not replace string values. 
 
 ## Angular Components
+
 
 ## Component Lifecycle
 
