@@ -61,7 +61,7 @@ Upon minification the variables $scope and $filter would be replaced with some o
 
 ***Protected from minification***
 
-Below we attach an $inject property to the controller that is set to an array of strings. The strings are the names of the dependencies (services) to be injected. Angular would check to see if an $inject property had been defined on the controller and if so use it to determine the injected services.  
+Below we attach an $inject property to the controller that is set to an array of strings. The strings are the names of the dependencies (services) to be injected. Angular would check to see if an $inject property had been defined on the controller, and if so, use it to determine the injected services.  
      	 
      angular.module('MyApp', )
      .controller('MyController', MyController);
