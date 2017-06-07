@@ -18,7 +18,7 @@ leheraControllers.controller('LeheraListCtrl', ['$scope', 'Lehera',
 	   if ( theSound == null ) {
 		   spinnerObject.removeClass('glyphicon glyphicon-play');
            spinnerObject.addClass('fa fa-spinner fa-spin');
-	       theSound = new Howl({  urls: ['/audio/'+this.lehera.id+'.mp3'],
+	       theSound = new Howl({  urls: ['/leheraApp/audio/'+this.lehera.id+'.mp3'],
 	                                       autoplay: false,
 	                                       loop: true,
 	                                       onload:function(){
@@ -59,7 +59,7 @@ leheraControllers.controller('LeheraListCtrl', ['$scope', 'Lehera',
 leheraControllers.controller('LeheraDetailCtrl', ['$scope', '$routeParams', 'Lehera',
   function($scope, $routeParams, Lehera) {
     $scope.lehera = Lehera.get({leheraId: $routeParams.leheraId});
-    $scope.sound = new Howl({  urls: ['/audio/'+$routeParams.leheraId+'.mp3'],  autoplay: false,  loop: true,  volume: 0.5 });
+    $scope.sound = new Howl({  urls: ['/leheraApp/audio/'+$routeParams.leheraId+'.mp3'],  autoplay: false,  loop: true,  volume: 0.5 });
 
 
     $scope.playAudio = function() {
