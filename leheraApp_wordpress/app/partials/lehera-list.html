@@ -1,0 +1,53 @@
+ <div class="container-fluid lehera-app">
+    <div class="row">
+      <div class="col-md-4" id="leheraParamsCol">
+        <!--Sidebar content-->
+        <p></p>
+		<p>
+			Taal:<br>
+			<select ng-model="taal_query">
+				<option value="taal">All</option>
+				<option value="teen taal">Teen Taal</option>
+				<option value="jhap taal">Jhap Taal</option>
+				<option value="chartaal ki sewari">Chartaal Ki Sewari</option>
+			</select>
+		</p>
+		<p>
+		Raag:<br>
+        <select ng-model="raag_query">
+          <option value="raag">All</option>
+		  <option value="raag bhairavi">Raag Bhairavi</option>
+		  <option value="raag hamsadhwani">Raag Hamsadhwani</option>
+		  <option value="raag unknown">Unknown</option>
+        </select>
+		</p>
+		<p>
+		BPM:<br>
+        <select ng-model="bpm_query">
+          <option value="bpm">All</option>
+		  <option value="55 bpm">55 bpm</option>
+		  <option value="65 bpm">65 bpm</option>
+		  <option value="90 bpm">90 bpm</option
+		  <option value="65 bpm">65 bpm</option>>
+        </select>
+		</p>
+		
+      </div>
+      <div class="col-md-8" id="leheraListCol">
+        <!--Body content-->
+        <br>
+
+        <ul>
+          <li id="{{lehera.id}}" class="lehera-list" ng-repeat="lehera in leheras | filter:taal_query | filter:raag_query | filter:bpm_query">
+			
+  			<button type="button" class="btn btn-default btn-xs" id="button{{lehera.id}}" ng-click="playAudio()" value="{{lehera.control}}">
+			<span class="glyphicon glyphicon-play" id="span{{lehera.id}}"></span>
+			</button> {{lehera.name}}
+			<div id="statusDiv{{lehera.id}}"></div>
+
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
