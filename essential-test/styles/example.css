@@ -1,6 +1,19 @@
-ul {
-list-style-position: outside; /* Aligns the list vertically */
-padding-left: 30px; /* Optional */
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
 }
 
-li { margin-bottom: 15px; /* Optional */ }
+ul {
+  list-style-position: outside;
+  padding-left: 30px;
+}
+
+li {
+  margin-bottom: 15px;
+}
+
+.displayErrorText {
+  color: red;
+}
+
+/*# sourceMappingURL=example.css.map */
