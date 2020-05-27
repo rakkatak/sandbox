@@ -1,50 +1,81 @@
 (function(){
 'use strict';
 
-  angular.module('ExampleApp', [])
-  .controller('ExampleAppController', ExampleAppController)
-  .service('ExampleApiService', ExampleApiService);
+	angular.module('ExampleApp', [])
+	.controller('ExampleAppController', ExampleAppController)
+	.service('ExampleApiService', ExampleApiService);
 
-  ExampleAppController.$inject = ['$scope', 'ExampleApiService'];
-  function ExampleAppController($scope, ExampleApiService) {
-    var example = this;
+	ExampleAppController.$inject = ['$scope', 'ExampleApiService'];
+	function ExampleAppController($scope, ExampleApiService) {
+		var example = this;
 
-    $scope.sendItems = function() {
-      console.log("sendItems");
-      example.response = {};
-      var data = {dateOfBirth:"oct 13", displayName: "anita"};
+		example.sendItems = function() {
+		var filename=example.initFileName();
 
-      var promise = ExampleApiService.postExampleFormItems(data);
+		if (example.validateDisplayName()) {
+				var data = {displayName: example.displayName, 
+				dateOfBirth: example.dateOfBirth,
+				option1: example.option1,
+				option2: example.option2,
+				fileName: filename};
 
-       promise.then(function (response) {
-          example.response = response;
-       })
-       .catch(function (error) {
-         console.log("Something went terribly wrong.");
-       });
+			var promise = ExampleApiService.postExampleFormItems(data);
 
-    }
-  }
+			 promise.then(function (response) {
+					console.log('Response from Node API: ', response);
+					example.response = response.data;
+					example.displayNameError = "";
+			 })
+			 .catch(function (error) {
+				 console.log("Something went terribly wrong.");
+			 });
+		} else {
+			example.displayNameError = "The display name cannot contain whitespace.";
+		}
+			
+		}
 
-  ExampleApiService.$inject = ['$http'];
-  function ExampleApiService( $http) {
-    var service = this;
+		example.initFileName = function() {
+			var filename=""
+			if (example.file) {
+				filename=example.file.name;
+			}
+			return filename;
+		}
 
-    service.postExampleFormItems = function(data) {
-      console.log("formItems", data);
-      var config = {headers:{'Content-Type':'application/json'}};
-      var url = 'https://sandbox.rakkatak.com:3000';
-      return $http.post(
-        url,
-        JSON.stringify(data),
-        config
-      ).then(function success(response){
-        var responseItems = response;
-        return responseItems;
-      }).catch(function(error) {
-        console.log(error);
-      });
-    }
-  }
+		example.validateDisplayName = function() {
+			var inValid = new RegExp("[\\s]");
+			if (inValid.test(example.displayName)) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+    // This is less than ideal and there are better ways to do this in later versions of angular
+		$scope.setFileName = function(element) {
+			example.file=element.files[0];
+		}
+	}
+
+	ExampleApiService.$inject = ['$http'];
+	function ExampleApiService( $http) {
+		var service = this;
+
+		service.postExampleFormItems = function(data) {
+			var config = {headers:{'Content-Type':'application/json'}};
+			var url = 'https://sandbox.rakkatak.com:3000';
+			return $http.post(
+				url,
+				JSON.stringify(data),
+				config
+			).then(function success(response){
+				var responseItems = response;
+				return responseItems;
+			}).catch(function(error) {
+				console.log(error);
+			});
+		}
+	}
 
 })();

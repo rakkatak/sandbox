@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<title>Example form</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="angular.min.js"></script>
-		<script src="app.js"></script>
-		<link rel="stylesheet" href="styles/example.css">
-	</head>
-<body ng-app="ExampleApp" >
-	 <div class="container" ng-controller="ExampleAppController">
+<head>
+	<title>Example form</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="angular.min.js"></script>
+	<script src="app.js"></script>
+	<link rel="stylesheet" href="styles/example.css">
+</head>
+<body ng-app="ExampleApp">
+	 <div class="container" ng-controller="ExampleAppController as ctrl">
 			<div>
 				<h1>Example</h1>
 					<ul style="list-style-position">
@@ -17,15 +17,17 @@
 					</ul>
 					<form>
 						<label for="displayName">Display name:</label>
-						<input name="displayName" type="text" id="displayName"><br><br>
+						<input ng-model="ctrl.displayName" type="text" id="displayName"> <span class="displayErrorText">{{ctrl.displayNameError}}</span><br><br>
 						<label for="dateOfBirth">Date of birth:</label>
-						<input name="dateOfBirth" type="date" id="dateOfBirth"><br><br>
-						<input type="checkbox" id="option1" name="option1" value="option 1">
+						<input ng-model="ctrl.dateOfBirth" type="date" id="dateOfBirth"><br><br>
+						<input ng-model="ctrl.option1" type="checkbox" id="option1" value="option 1">
 						<label for="option1"> Option 1</label><br>
-						<input type="checkbox" id="option2" name="option2" value="option 2">
+						<input ng-model="ctrl.option2" type="checkbox" id="option2" value="option 2">
 						<label for="option2"> Option 2</label><br><br><br>
-						<input type="file" id="filename" name="filename"><br><br>
-						<button type="button" ng-click="sendItems();">Send</button>
+						<input ng-model="ctrl.fileName" type="file" id="fileName" onChange="angular.element(this).scope().setFileName(this)"><br><br>
+						<button type="button" ng-click="ctrl.sendItems();">Send</button><br><br>
+
+						{{ctrl.response}}
 					</form>
 			</div>
 	 </div>
