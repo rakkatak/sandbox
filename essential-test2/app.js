@@ -38,7 +38,7 @@
     service.postExampleFormItems = function(data) {
       console.log("formItems", data);
       var headers = {};
-      var url = 'http://sandbox.rakkatak.com:3000';
+      var url = 'https://sandbox.rakkatak.com:3000';
       return $http.post(
         url,
         data
