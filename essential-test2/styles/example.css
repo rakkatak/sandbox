@@ -1,0 +1,6 @@
+ul {
+list-style-position: outside; /* Aligns the list vertically */
+padding-left: 30px; /* Optional */
+}
+
+li { margin-bottom: 15px; /* Optional */ }

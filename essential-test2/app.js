@@ -1,68 +1,53 @@
 (function(){
 'use strict';
 
-  angular.module('LunchCheck', [])
-  .controller('LunchCheckController', LunchCheckController);
+  angular.module('ExampleApp', [])
+  .controller('ExampleAppController', ExampleAppController)
+  .service('ExampleApiService', ExampleApiService);
 
-  LunchCheckController.$inject = ['$scope'];
-  function LunchCheckController($scope) {
+  ExampleAppController.$inject = ['$scope', 'ExampleApiService'];
+  function ExampleAppController($scope, ExampleApiService) {
+    var example = this;
 
-    $scope.addItems = function() {
-      $scope.lunchItemsMsg = "";
-      $scope.additionalLunchItemsMsg = "";
-      $scope.lunchItemsMsgClass = "successMsg";
-      $scope.lunchItemsTextBoxClass = "lunchMenuSuccess";
+    $scope.sendItems = function() {
+      console.log("sendItems");
+      example.response = {};
+      var data = {};
 
-      var lunchItems = $scope.lunchItems;
-      var enjoyMsg = "Enjoy!";
-      var emptyItemsMsg = "Empty values and illegal characters were not included in final count.";
-      var tooMuchMsg = "Too much!";
-      var enterDataMsg = "Please enter data first.";
+      var promise = ExampleApiService.postExampleFormItems(data);
 
-      // if nothing has been entered
-      if (!lunchItems) {
-        $scope.lunchItemsMsg = enterDataMsg;
-        $scope.lunchItemsMsgClass = "errorMsg";
-        $scope.lunchItemsTextBoxClass = "lunchMenuError";
-        return;
-      }
+       promise.then(function (response) {
+          list.found = response;
+          if (list.found.length==0) {
+              list.listEmpty = true;
+          } else {
+              list.listEmpty = false;
+          }
+       })
+       .catch(function (error) {
+         console.log("Something went terribly wrong.");
+       });
 
-      // init lunchItemsMsg
-      $scope.lunchItemsMsg = enjoyMsg;
-      var lunchItemsArray = lunchItems.split(',');
-
-      // assess if there are empty items
-      var emptyItems = determineEmptyItems(lunchItemsArray);
-
-     // Adjust the msg
-      if (emptyItems>0) {
-        $scope.additionalLunchItemsMsg = emptyItemsMsg;
-      }
-
-      // determine if too much
-      var totalItems = lunchItemsArray.length-emptyItems;
-      if (totalItems > 3) {
-        $scope.lunchItemsMsg = tooMuchMsg;
-      } else if (totalItems == 0) {
-        // they have entered commas with nothing or illegal characters in between
-        $scope.lunchItemsMsg = enterDataMsg;
-        $scope.lunchItemsMsgClass = "errorMsg";
-        $scope.lunchItemsTextBoxClass = "lunchMenuError";
-      }
     }
+  }
 
-    function determineEmptyItems(lunchItemsArray) {
-      var emptyItems = 0;
-      for (var i=0; i<lunchItemsArray.length; i++) {
-        if (isEmptyItem(lunchItemsArray, i)) {
-          emptyItems ++;
-        }
-      }
-      return emptyItems;
-    }
+  ExampleApiService.$inject = ['$http'];
+  function ExampleApiService($http) {
+    var service = this;
 
-    function isEmptyItem(array, i) {
-      return !(array[i] && array[i].trim().replace(/\//g, '').replace(/\\/g, '').length!=0);
+    service.postExampleFormItems = function(data) {
+      console.log("formItems", data);
+      var headers = {};
+      var url = 'http://sandbox.rakkatak.com:3000';
+      return $http.post(
+        url,
+        data
+      ).then(function success(response){
+        var responseItems = response;
+        return responseItems;
+      }).catch(function(error) {
+        console.log(error);
+      });
     }
   }
 
