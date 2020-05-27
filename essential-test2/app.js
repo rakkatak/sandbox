@@ -12,17 +12,12 @@
     $scope.sendItems = function() {
       console.log("sendItems");
       example.response = {};
-      var data = {};
+      var data = {dateOfBirth:"oct 13", displayName: "anita"};
 
       var promise = ExampleApiService.postExampleFormItems(data);
 
        promise.then(function (response) {
-          list.found = response;
-          if (list.found.length==0) {
-              list.listEmpty = true;
-          } else {
-              list.listEmpty = false;
-          }
+          example.response = response;
        })
        .catch(function (error) {
          console.log("Something went terribly wrong.");
@@ -32,16 +27,17 @@
   }
 
   ExampleApiService.$inject = ['$http'];
-  function ExampleApiService($http) {
+  function ExampleApiService( $http) {
     var service = this;
 
     service.postExampleFormItems = function(data) {
       console.log("formItems", data);
-      var headers = {};
+      var config = {headers:{'Content-Type':'application/json'}};
       var url = 'https://sandbox.rakkatak.com:3000';
       return $http.post(
         url,
-        data
+        JSON.stringify(data),
+        config
       ).then(function success(response){
         var responseItems = response;
         return responseItems;
