@@ -1,41 +1,34 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Lunch Checker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="angular.min.js"></script>
-    <script src="app.js"></script>
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <style>
-      .message { font-size: 1.3em; font-weight: bold; }
-      .additional-message { font-size: 1.3em; font-weight: bold; }
-      .successMsg { color: green; }
-      .errorMsg { color: red; }
-      .lunchMenuSuccess {border-color: green;}
-      .lunchMenuError {border-color: red;}
-    </style>
-  </head>
-<body ng-app="LunchCheck" >
-   <div class="container" ng-controller="LunchCheckController">
-     <h1>Lunch Checker</h1>
-
-         <div class="form-group">
-             <input id="lunch-menu" type="text"
-             ng-model="lunchItems"
-             placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control {{lunchItemsTextBoxClass}}">
-            Note: One or more whitespace, nothing, forward and back slash(es) between commas (i.e. , , OR ,, OR ,/, OR ,\,) are not counted as an item towards to the count
-         </div>
-         <div class="form-group">
-             <button class="btn btn-default" ng-click="addItems();">Check If Too Much</button>
-         </div>
-         <div class="form-group message {{lunchItemsMsgClass}}">
-           {{lunchItemsMsg}}
-         </div>
-         <div>
-           {{additionalLunchItemsMsg}}
-         </div>
-   </div>
+	<head>
+		<title>Example form</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="angular.min.js"></script>
+		<script src="app.js"></script>
+		<link rel="stylesheet" href="styles/example.css">
+	</head>
+<body ng-app="ExampleApp" >
+	 <div class="container" ng-controller="ExampleAppController">
+			<div>
+				<h1>Example</h1>
+					<ul style="list-style-position">
+						<li><img src="images/flower.png"></li>
+						<li><img src="images/imp-vector-creature.svg"></li>
+					</ul>
+					<form>
+						<label for="displayName">Display name:</label>
+						<input name="displayName" type="text" id="displayName"><br><br>
+						<label for="dateOfBirth">Date of birth:</label>
+						<input name="dateOfBirth" type="date" id="dateOfBirth"><br><br>
+						<input type="checkbox" id="option1" name="option1" value="option 1">
+						<label for="option1"> Option 1</label><br>
+						<input type="checkbox" id="option2" name="option2" value="option 2">
+						<label for="option2"> Option 2</label><br><br><br>
+						<input type="file" id="filename" name="filename"><br><br>
+						<button type="button" ng-click="sendItems();">Send</button>
+					</form>
+			</div>
+	 </div>
 
 </body>
 </html>
